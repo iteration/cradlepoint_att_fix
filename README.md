@@ -11,9 +11,12 @@ SIM1 will drop, SIM2 will connect. SIM2 will FAILBACK after XXX seconds.
 
 
 Edgerouter:
-    Load Balance eth0 and eth1
+
+    Load Balance eth0 and eth1 using wizard
     eth0: CBA850 - AT&T
     eth1: TMobile Modem
+
+    Copy scripts to /config/scripts
 
 TODO: Improve script and timing to be  ore resilient
 TODO: PING test on specific interface
@@ -28,5 +31,19 @@ set load-balance group G interface eth0 weight 70
 set load-balance group G interface eth1 weight 30
 set load-balance group G lb-local enable
 set load-balance group G lb-local-metric-change disable
+```
+
+Common commands:
+```
+scp wani.sh user@ip:/config/scripts/wani.sh
+
+ssh user@ip
+---
+show load-balance watchdog
+show load-balance status
+
+tail -f /var/logs/messages
+
+show configuration commands
 ```
 
